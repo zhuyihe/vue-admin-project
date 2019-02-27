@@ -70,6 +70,9 @@ export default {
                   login(this.ruleForm2).then(res=>{
                     //提交数据到vuex
                       this.$store.commit('COMMIT_TOKEN',res)
+                      this.$router.push({
+                        path:'/'
+                      })
                   }).catch(err=>{
                     console.log(err)
                   })

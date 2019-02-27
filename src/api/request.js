@@ -5,6 +5,7 @@ import {
     Loading
 } from "element-ui";
 import {messages} from '../assets/js/common.js'
+import store from '../store/store'
 axios.defaults.timeout = 60000;
 axios.defaults.baseURL = process.env.BASE_URL;
 axios.defaults.headers.post["Content-Type"] =
@@ -20,9 +21,8 @@ axios.interceptors.request.use(
             text: "正在加载中......",
             fullscreen: true
         });
-        var access_token = window.localStorage["access_token"];
-        if (access_token) {
-            config.headers["Authorization"] = "Bearer " + access_token;
+        if (store.state.access_token) {
+            config.headers["Authorization"] = "Bearer " + store.state.access_token;
         }
         return config;
     },
@@ -50,6 +50,7 @@ axios.interceptors.response.use(
         })
     },
     error => {
+        console.log(error)
         //请求成功后关闭加载框
         if (loading) {
             loading.close();
