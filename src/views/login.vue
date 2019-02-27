@@ -26,6 +26,7 @@
 </template>
 <script>
 import {login} from '../api/api.js'
+import {messages} from '../assets/js/common.js'
 export default {
   name: "login",
   data() {
@@ -65,14 +66,14 @@ export default {
       submitForm(formName){
           this.$refs[formName].validate((valid)=>{
               if(valid){
-                //   console.log('sub')
-                //   console.log(valid)
                   console.log(this.ruleForm2)
                   login(this.ruleForm2).then(res=>{
-                      console.log(res)
-                  });
+                    //提交数据到vuex
+                      this.$store.commit('COMMIT_TOKEN',res)
+                  }).catch(err=>{
+                    console.log(err)
+                  })
               }else{
-                console.log('err')
                 return false;
               }
           })

@@ -6,21 +6,21 @@ module.exports = {
             return args;
         })
     },
-    devServer: {
-        // 设置代理
-        lintOnSave: true,
-        devServer: {
-            proxy: {
-                // proxy all requests starting with /api to jsonplaceholder
-                '/api': {
-                    target: 'http://test.jubao56.com/', //代理接口
-                    changeOrigin: true,
-                    pathRewrite: {
-                        '^/api': '' //代理的路径
-                    }
-                }
-            }
-        }
-        // proxy: 'http://test.jubao56.com/'
-    }
+    // devServer: {
+    //     // 设置代理
+    //     lintOnSave: true,
+    //     devServer: {
+    //         proxy: {
+    //             // proxy all requests starting with /api to jsonplaceholder
+    //             '/api': {
+    //                 target: 'http://test.jubao56.com/', //代理接口
+    //                 changeOrigin: true,
+    //                 pathRewrite: {
+    //                     '^/api': '' //代理的路径
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     // proxy: 'http://test.jubao56.com/'
+    // }
 }

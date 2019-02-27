@@ -1,19 +1,12 @@
 import axios from "axios";
 import router from "../router/router";
-import {
-    Message
-} from "element-ui";
 import QS from "qs";
 import {
     Loading
 } from "element-ui";
-// const service = axios.create({
-//   timeout: 60000,
-//   baseURL: process.env.BASE_URL
-// });
+import {messages} from '../assets/js/common.js'
 axios.defaults.timeout = 60000;
-axios.defaults.baseURL = '/api';
-console.log()
+axios.defaults.baseURL = process.env.BASE_URL;
 axios.defaults.headers.post["Content-Type"] =
     "application/x-www-form-urlencoded;charset=UTF-8";
 let loading = null;
@@ -23,7 +16,6 @@ let loading = null;
  */
 axios.interceptors.request.use(
     config => {
-        console.log(config);
         loading = Loading.service({
             text: "正在加载中......",
             fullscreen: true
@@ -38,29 +30,24 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
-let messages = function (type, message) {
-    let tip = message;
-    Message({
-        type: type,
-        message: message
-    });
-};
 /*
  *请求响应拦截
  *用于处理数据返回后的操作
  */
 axios.interceptors.response.use(
     response => {
-        //请求成功后关闭加载框
-        if (loading) {
-            loading.close();
-        }
-        const res = response.data;
-        if (res.err_code == 0) {
-            return Promise.resolve(res);
-        } else {
-            return Promise.reject(res);
-        }
+        return new Promise((resolve, reject) => {
+            //请求成功后关闭加载框
+            if (loading) {
+                loading.close();
+            }
+            const res = response.data;
+            if (res.err_code === 0) {
+                resolve(res)
+            } else {
+                reject(res)
+            }
+        })
     },
     error => {
         //请求成功后关闭加载框
@@ -124,10 +111,10 @@ export function get(url, params) {
                 params
             })
             .then(res => {
-                resolve(res.data);
+                resolve(res);
             })
             .catch(err => {
-                reject(err.data);
+                reject(err);
             });
     });
 }
@@ -139,12 +126,12 @@ export function get(url, params) {
 export function post(url, params) {
     return new Promise((resolve, reject) => {
         axios
-            .get(url, QS.stringify(params))
+            .post(url, params)
             .then(res => {
-                resolve(res.data);
+                resolve(res);
             })
             .catch(err => {
-                reject(err.data);
+                reject(err);
             });
     });
 }
