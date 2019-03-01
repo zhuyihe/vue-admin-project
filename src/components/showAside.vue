@@ -1,19 +1,19 @@
 <template>
-    <div>
+    <!-- <div>
       <div class="showAside" @click="toggleClick">
            <i class="el-icon-menu"></i>
       </div>
-    </div>
+    </div> -->
 </template>
 <script>
 export default {
     name:'showAside',
-    props:{
-        toggleClick:{
-            type:Function,
-            default:null
-        }
-    }
+    // props:{
+    //     toggleClick:{
+    //         type:Function,
+    //         default:null
+    //     }
+    // }
 }
 </script>
 <style lang="scss" scoped>

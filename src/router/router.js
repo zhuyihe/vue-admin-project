@@ -1,24 +1,37 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '../views/Home.vue'
-import login from '../views/login.vue'
 import store from '../store/store'
 import NProgress from 'nprogress' //进度条
 import 'nprogress/nprogress.css' 
 Vue.use(Router)
 // 路由懒加载
-const getComponent = (name) => () => import(`../views/${name}.vue`);
+const getComponent = (name,component) => () => import(`@/views/${name}/${component}.vue`);
 const myRouter=new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/home',
+      component: getComponent('login','index')
+    },
+    {
       path: '/login',
       name: 'login',
-      component: getComponent('login')
+      component: getComponent('login','index')
     },
     {
       path: '/',
-      name: 'layout',
-      component:()=> import(`../views/layout/Layout.vue`)
+      component:getComponent('layout','Layout'),
+      children:[{
+        path:'/home',
+        name:'home',
+        component: getComponent('home','index'),
+        meta:{title:'首页'}
+      },{
+        path:'/icon',
+        component: getComponent('icons','index'),
+        name:'icon',
+        meta:{title:'自定义图标'}
+      }]
     }
   ]
 })

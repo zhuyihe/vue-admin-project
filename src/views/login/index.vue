@@ -25,8 +25,8 @@
   </div>
 </template>
 <script>
-import {login} from '../api/api.js'
-import {messages} from '../assets/js/common.js'
+import {login} from '@//api/api.js'
+import {messages} from '@/assets/js/common.js'
 export default {
   name: "login",
   data() {
