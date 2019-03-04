@@ -25,7 +25,6 @@ export default {
   .contents{
     width: auto;
     height: 100%;
-    padding: 10px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }

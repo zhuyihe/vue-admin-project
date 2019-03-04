@@ -5,6 +5,8 @@ import store from './store/store'
 import './plugins/element.js'
 import './assets/css/normalize.css'
 import './assets/css/public.css'
+// 引入字体文件
+import '@/assets/icon/iconfont.css'
 Vue.config.productionTip = false
 new Vue({
   router,
