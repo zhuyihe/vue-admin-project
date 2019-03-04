@@ -1,10 +1,256 @@
 .el-form-item__label{
     color: white ;
 }
-*{
-    padding: 0;
-    margin: 0;
-}
-a{
-    text-decoration: none;
-}
+/*
+ * =====================================================
+ * 页面公共样式、主体样式
+ * =====================================================
+ */
+
+ /*初始化类*/
+ @charset "UTF-8";
+ html {
+     font-family:  "微软雅黑", Tahoma, Helvetica, Arial, sans-serif;
+   /*去掉谷歌字体最小为12px的问题*/
+     -webkit-text-size-adjust: 100%;
+   /*超链接的去除高亮*/
+     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+ }
+ *{
+     margin: 0;
+     padding: 0;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+ }
+ input[type=button], input[type=submit], input[type=file], button { 
+   cursor: pointer; 
+   /*去除表单元素点击时的外框*/
+   -webkit-appearance: none;
+   outline: none; 
+ }
+ body {
+     margin: 0;
+     padding: 0;
+     line-height: normal;
+   font-size: 0.24rem;
+   /*下滑更流畅*/
+     -webkit-overflow-scrolling: touch;
+ }
+ 
+ img {
+     border: 0;
+   vertical-align: middle;
+ }
+ 
+ *:focus{
+     outline: medium;
+ }
+ 
+ article,
+ aside,
+ details,
+ figcaption,
+ figure,
+ footer,
+ header,
+ hgroup,
+ main,
+ nav,
+ section,
+ summary {
+     display: block;
+ }
+ a{
+     text-decoration: none;
+     color: white;
+ }
+ audio,
+ canvas,
+ progress,
+ video {
+     display: block;
+ }
+ 
+ a {
+     background: transparent;
+     text-decoration: none;
+ }
+ 
+ ol, ul, li {
+     list-style: outside none none;
+ }
+ 
+ table {
+     border-collapse: collapse;
+     border-spacing: 0;
+ }
+ 
+ a:active {
+     opacity: 0.5;
+     -webkit-transition: 0.3s;
+     transition: 0.3s;
+ }
+ 
+ select,
+ textarea,
+ input,
+ button {
+     border:1px solid #c8c7cc;
+     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+     -webkit-appearance: none !important;
+ }
+ 
+  /*主样式*/
+ .pull-left {
+     float: left !important;
+ }
+ 
+ .pull-right {
+     float: right !important;
+ }
+ 
+ .clearfix:before, .clearfix:after {
+     display: table;
+     content: ' ';
+ }
+ .clearfix:after {
+     clear: both;
+ }
+ 
+ .ellipsis {
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+ }
+ 
+ .ellipsis-2 {
+     display: -webkit-box;
+     overflow: hidden;
+     white-space: normal !important;
+     text-overflow: ellipsis;
+     word-wrap: break-word;
+     -webkit-line-clamp: 2;
+     -webkit-box-orient: vertical;
+ }
+ 
+ .dcenter {
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ /*解决移动端1px边框变粗样式*/
+ .border-t,
+ .border-b,
+ .border-l,
+ .border-r,
+ .border-tb,
+ .border {
+     position: relative;
+ }
+ .border-t:after,
+ .border-b:after,
+ .border-l:after,
+ .border-r:after,
+ .border-tb:after,
+ .border:after {
+     display: block;
+     content: '';
+     position: absolute;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     -webkit-transform-origin: 0 0;
+     -webkit-transform: scale(1);
+     pointer-events: none;
+ }
+ .border-l:after {
+     border-left: 1px solid #c8c7cc;
+ }
+ .border-r:after {
+     border-right: 1px solid #c8c7cc;
+ }
+ .border-t:after {
+     border-top: 1px solid #c8c7cc;
+ }
+ .border-b:after {
+     border-bottom: 1px solid #c8c7cc;
+ }
+ .border-tb:after {
+     border-top: 1px solid #c8c7cc;
+     border-bottom: 1px solid #c8c7cc;
+ }
+ .border:after {
+     border:1px solid #c8c7cc;
+ }
+ .border.border-radius:after {
+     border-radius: 6px;
+ }
+ @media screen and (-webkit-min-device-pixel-ratio:1.5) {
+     .border-t:after,
+     .border-b:after,
+     .border-l:after,
+     .border-r:after,
+     .border-tb:after,
+     .border:after {
+         right: -100%;
+         bottom: -100%;
+         -webkit-transform: scale(0.5);
+     }
+ }
+ 
+ /*仿IOS开关*/
+ .switch {
+       -webkit-appearance: none;
+        -moz-appearance: none;
+               appearance: none;
+       position: relative;
+       width: 52px;
+       height: 32px;
+       border: 1px solid #DFDFDF;
+       outline: 0;
+       border-radius: 16px;
+       box-sizing: border-box;
+       background: #DFDFDF;
+ }
+ .switch:before {
+       content: " ";
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 50px;
+       height: 30px;
+       border-radius: 15px;
+       background-color: #FDFDFD;
+       -webkit-transition: -webkit-transform .3s;
+       transition: -webkit-transform .3s;
+       transition: transform .3s;
+       transition: transform .3s, -webkit-transform .3s;
+ }
+ .switch:after {
+       content: " ";
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 30px;
+       height: 30px;
+       border-radius: 15px;
+       background-color: #FFFFFF;
+       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+       -webkit-transition: -webkit-transform .3s;
+       transition: -webkit-transform .3s;
+       transition: transform .3s;
+       transition: transform .3s, -webkit-transform .3s;
+ }
+ .switch:checked {
+       border-color: #04BE02;
+       background-color: #04BE02;
+ }
+ .switch:checked:before {
+       -webkit-transform: scale(0);
+               transform: scale(0);
+ }
+ .switch:checked:after {
+       -webkit-transform: translateX(20px);
+               transform: translateX(20px);
+ }

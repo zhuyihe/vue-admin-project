@@ -108,7 +108,7 @@ export default {
 <style lang="scss" scoped>
 .tags {
   position: relative;
-  height: 30px;
+  // height: 30px;
   overflow: hidden;
   background: #fff;
   padding-right: 120px;
