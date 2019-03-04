@@ -10,7 +10,7 @@
         label-width="100px"
         class="login-ruleForm"
       >
-       <el-form-item label="用户名" prop="username">
+        <el-form-item label="用户名" prop="username">
           <el-input v-model="ruleForm2.username"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
@@ -25,65 +25,62 @@
   </div>
 </template>
 <script>
-import {login} from '@//api/api.js'
-import {messages} from '@/assets/js/common.js'
+import { login } from "@//api/api.js";
+import { messages } from "@/assets/js/common.js";
 export default {
   name: "login",
   data() {
-      var validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请输入密码'));
-        } else {
-          if (this.ruleForm2.checkPass !== '') {
-            this.$refs.ruleForm2.validateField('checkPass');
-          }
-          callback();
+    var validatePass = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入密码"));
+      } else {
+        if (this.ruleForm2.checkPass !== "") {
+          this.$refs.ruleForm2.validateField("checkPass");
         }
-      };
-      var validateName=(rule, value, callback)=>{
-          if (value === '') {
-          callback(new Error('请输入用户名'));
-        }else{
-            callback()
-        }
+        callback();
       }
-      return {
-        ruleForm2: {
-          password: '',
-          username: ''
-        },
-        rules2: {
-          password: [
-            { validator: validatePass, trigger: 'blur' }
-          ],
-          username: [
-            { validator: validateName, trigger: 'blur' }
-          ]
-        }
-      };
-  },
-  methods:{
-      submitForm(formName){
-          this.$refs[formName].validate((valid)=>{
-              if(valid){
-                  console.log(this.ruleForm2)
-                  login(this.ruleForm2).then(res=>{
-                    //提交数据到vuex
-                      this.$store.commit('COMMIT_TOKEN',res)
-                      this.$router.push({
-                        path:'/'
-                      })
-                  }).catch(err=>{
-                    console.log(err)
-                  })
-              }else{
-                return false;
-              }
-          })
+    };
+    var validateName = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入用户名"));
+      } else {
+        callback();
+      }
+    };
+    return {
+      ruleForm2: {
+        password: "",
+        username: ""
       },
-      resetForm(formName){
-          this.$refs[formName].resetFields();
+      rules2: {
+        password: [{ validator: validatePass, trigger: "blur" }],
+        username: [{ validator: validateName, trigger: "blur" }]
       }
+    };
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          login(this.ruleForm2)
+            .then(res => {
+              //提交数据到vuex
+              this.$store.commit("COMMIT_TOKEN", res);
+              this.$router.push({
+                path: "/"
+              });
+            })
+            .catch(err => {
+              messages("error", err.err_msg);
+            });
+        } else {
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    }
   }
 };
 </script>
@@ -99,7 +96,7 @@ export default {
     position: absolute;
     left: 45%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
 }
 </style>

@@ -42,10 +42,10 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      isCollapse: false,
       items: [
         {
           icon: "el-icon-edit-outline",
@@ -137,7 +137,8 @@ export default {
   computed: {
     onRoutes() {
       return this.$route.path.replace("/", "");
-    }
+    },
+    ...mapState(["isCollapse"])
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -153,7 +154,6 @@ export default {
 .aside {
   -webkit-transition: width 0.28s;
   transition: width 0.28s;
-  width: 180px !important;
   height: 100%;
   position: fixed;
   font-size: 0px;
@@ -166,6 +166,9 @@ export default {
     width: 180px;
     height: 100%;
     text-align: left;
+  }
+  .el-menu--collapse {
+    height: 100%;
   }
 }
 </style>

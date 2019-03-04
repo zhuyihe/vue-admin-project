@@ -1,15 +1,32 @@
 <template>
   <div class="head-container">
-      <showAside/>
+    <showAside :toggle-click="toggleClick"/>
   </div>
 </template>
 <script>
-import showAside from '@/components/showAside.vue'
+import showAside from "@/components/showAside.vue";
+import { mapState } from "vuex";
 export default {
-    // name:'header',
-    components:{
-        showAside
+  // name:'header',
+  components: {
+    showAside
+  },
+  computed: {
+    isCollapse: {
+      get: function() {
+        return this.$store.state.isCollapse;
+      },
+      set: function(newValue) {
+        console.log(newValue);
+        this.$store.commit("IS_COLLAPSE", newValue);
+      }
     }
+  },
+  methods: {
+    toggleClick() {
+      this.isCollapse = !this.isCollapse;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

@@ -15,8 +15,9 @@
       </li>
     </ul>
     <div class="tags-close-box">
-      <el-dropdown >
-        <el-button size="mini" type="success">标签选项
+      <el-dropdown @command="handleCommand">
+        <el-button size="mini" type="success">
+          标签选项
           <i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu size="small" slot="dropdown">
@@ -29,7 +30,7 @@
 </template>
 <script>
 import { messages } from "@/assets/js/common.js";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 export default {
   created() {
     //判断标签里面是否有值 有的话直接加载
@@ -38,9 +39,16 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      tagsList: "tagsList"
-    })
+    //computed 方法里面没有set方法因此不能使用mapState,需要重新定义set方法
+    tagsList: {
+      get: function() {
+        return this.$store.state.tagsList;
+      },
+      set: function(newValue) {
+        this.$store.commit("TAGES_LIST", newValue);
+        // this.$store.state.tagsList = newValue;
+      }
+    }
   },
   watch: {
     //监听路由变化
@@ -51,16 +59,16 @@ export default {
   methods: {
     //选中的高亮
     isActive(path) {
-      console.log(path === this.$route.fullPath);
       return path === this.$route.fullPath;
     },
-    closeOther() {
-      // 关闭其他标签
-      const curItem = this.tagsList.filter(item => {
-        return item.path === this.$route.fullPath;
-      });
+    handleCommand(command) {
+      if (command == "closeOther") {
+        // 关闭其他标签
+        const curItem = this.tagsList.filter(item => {
+          return item.path === this.$route.fullPath;
+        });
         this.tagsList = curItem;
-       this.$store.commit("TAGES_LIST", this.tagsList);
+      }
     },
     //添加标签
     setTags(route) {
@@ -80,7 +88,6 @@ export default {
             name: route.name
           });
           //存到vuex
-          console.log(this.$store);
           this.$store.commit("TAGES_LIST", this.tagsList);
         }
       }
