@@ -16,7 +16,7 @@
     </ul>
     <div class="tags-close-box">
       <el-dropdown @command="handleCommand">
-        <el-button size="mini" type="success">
+        <el-button size="mini" type="primary">
           标签选项
           <i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
@@ -110,7 +110,7 @@ export default {
   position: relative;
   // height: 30px;
   overflow: hidden;
-  background: #fff;
+  background: $base-white;
   padding-right: 120px;
   box-shadow: 0 5px 10px #ddd;
 }
@@ -131,23 +131,23 @@ export default {
   height: 23px;
   line-height: 23px;
   border: 1px solid #e9eaec;
-  background: #fff;
+  background: $base-white;
   padding: 0 5px 0 12px;
   vertical-align: middle;
-  color: #666;
+  color: $base-666;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
 }
 
 .tags-li:not(.active):hover {
-  background: #f8f8f8;
+  background: $base-f8;
 }
 
 .tags-li.active {
-  color: #fff;
-  border: 1px solid #409eff;
-  background-color: #409eff;
+  color: $base-white;
+  border: 1px solid $base-color;
+  background-color: $base-color;
 }
 
 .tags-li-title {
@@ -157,11 +157,11 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-right: 5px;
-  color: #666;
+  color: $base-666;
 }
 
 .tags-li.active .tags-li-title {
-  color: #fff;
+  color: $base-white;
 }
 
 .tags-close-box {
@@ -171,9 +171,9 @@ export default {
   box-sizing: border-box;
   padding-top: 1px;
   text-align: center;
-  width: 110px;
+  // width: 110px;
   height: 30px;
-  background: #fff;
+  background: $base-white;
   box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }

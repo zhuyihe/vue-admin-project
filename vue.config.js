@@ -30,5 +30,13 @@ module.exports = {
         //     }
         // }
         // proxy: 'http://test.jubao56.com/'
-    }
+    },
+    //定义scss全局变量
+    css: {
+        loaderOptions: {
+          sass: {
+            data: `@import "@/assets/scss/global.scss";`
+          }
+        }
+      }
 }

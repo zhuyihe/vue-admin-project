@@ -15,7 +15,9 @@
               <div class="grid-content">
                 <ul class="icons-right">
                   <li class="chain">用户</li>
-                  <li><countTo :startVal='user.startVal' :endVal='user.endVal' :duration='1000'></countTo></li>
+                  <li>
+                    <countTo :startVal="user.startVal" :endVal="user.endVal" :duration="1000"></countTo>
+                  </li>
                 </ul>
               </div>
             </el-col>
@@ -27,7 +29,7 @@
           <el-row>
             <el-col :span="12">
               <div class="grid-content">
-                <div class="icons">
+                <div class="icons icons1">
                   <i class="iconfont icon-xiaoxi"></i>
                 </div>
               </div>
@@ -36,7 +38,9 @@
               <div class="grid-content">
                 <ul class="icons-right">
                   <li class="chain">消息</li>
-                  <li><countTo :startVal='user.startVal' :endVal='user.endVal' :duration='1000'></countTo></li>
+                  <li>
+                    <countTo :startVal="user.startVal" :endVal="user.endVal" :duration="1000"></countTo>
+                  </li>
                 </ul>
               </div>
             </el-col>
@@ -48,16 +52,18 @@
           <el-row>
             <el-col :span="12">
               <div class="grid-content">
-                <div class="icons">
-                  <i class="iconfont icon-yonghu"></i>
+                <div class="icons icons2">
+                  <i class="iconfont icon-liuliang"></i>
                 </div>
               </div>
             </el-col>
             <el-col :span="12">
               <div class="grid-content">
                 <ul class="icons-right">
-                  <li class="chain">用户</li>
-                  <li><countTo :startVal='user.startVal' :endVal='user.endVal' :duration='1000'></countTo></li>
+                  <li class="chain">今日访问量</li>
+                  <li>
+                    <countTo :startVal="user.startVal" :endVal="user.endVal" :duration="1000"></countTo>
+                  </li>
                 </ul>
               </div>
             </el-col>
@@ -69,16 +75,18 @@
           <el-row>
             <el-col :span="12">
               <div class="grid-content">
-                <div class="icons">
-                  <i class="iconfont icon-yonghu"></i>
+                <div class="icons icons3">
+                  <i class="iconfont icon-yanjing"></i>
                 </div>
               </div>
             </el-col>
             <el-col :span="12">
               <div class="grid-content">
                 <ul class="icons-right">
-                  <li class="chain">用户</li>
-                  <li><countTo :startVal='user.startVal' :endVal='user.endVal' :duration='1000'></countTo></li>
+                  <li class="chain">总访问量</li>
+                  <li>
+                    <countTo :startVal="user.startVal" :endVal="user.endVal" :duration="1000"></countTo>
+                  </li>
                 </ul>
               </div>
             </el-col>
@@ -90,57 +98,91 @@
 </template>
 <script>
 // 数字滚动插件
-import countTo from 'vue-count-to';
+import countTo from "vue-count-to";
 export default {
   name: "home",
   components: { countTo },
-  data(){
-    return{
-      user:{
+  data() {
+    return {
+      user: {
         startVal: 0,
         endVal: 10951
       }
-    }
+    };
   }
 };
 </script>
 <style lang="scss" scoped>
 .home {
   padding: 20px;
-  background: #f0f2f5;
+  background: $base-gray1;
   .bg-white {
-    background: white;
+    background: $base-white;
     cursor: pointer;
     .icons {
       text-align: left;
       width: 86px;
       height: 86px;
       margin: 10px;
-      padding: 10px;
+      padding: 13px;
       transition: 0.3s ease-in-out;
       border-radius: 3px;
       &:hover {
-        background: #4d79f6;
+        background: $base-bule1;
         .icon-yonghu {
-          color: white;
+          color: $base-white;
         }
       }
-      .iconfont{
+      .iconfont {
         font-size: 60px;
-      };
+      }
       .icon-yonghu {
         font-size: 60px;
-        color: #4d79f6;
+        color: $base-bule1;
+      }
+    }
+    .icons1 {
+      &:hover {
+        background: $base-ye;
+        .icon-xiaoxi {
+          color: $base-white;
+        }
+      }
+      .icon-xiaoxi {
+          color: $base-ye;
+      }
+    }
+    .icons2 {
+      &:hover {
+        background: $base-green;
+        .icon-liuliang {
+          color: $base-white;
+        }
+      }
+      .icon-liuliang {
+          color: $base-green;
+      }
+    }
+    .icons3 {
+      &:hover {
+        background: $base-pink;
+        .icon-yanjing {
+          color: $base-white;
+        }
+      }
+      .icon-yanjing {
+          color: $base-pink;
       }
     }
     .icons-right {
       font-size: 24px;
-      margin: 16px;
+      margin-top:16px;
+      margin-right: 16px; 
       li {
         margin: 10px 0;
       }
     }
-    .chain{
+    .chain {
       color: rgba(0, 0, 0, 0.45);
       font-size: 18px;
     }

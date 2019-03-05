@@ -6,7 +6,6 @@
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
-      background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
       router
@@ -162,6 +161,9 @@ export default {
   left: 0;
   z-index: 1001;
   overflow: hidden;
+  .el-menu{
+    background: linear-gradient(top,#8c6bc7,#3b3266);
+  }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 180px;
     height: 100%;
