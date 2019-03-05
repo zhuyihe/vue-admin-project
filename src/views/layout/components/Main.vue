@@ -22,8 +22,9 @@ export default {
   position: relative;
   overflow: hidden;
   // background: #f0f0f0;
+  width: 100%;
   .contents{
-    width: auto;
+    
     height: 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;

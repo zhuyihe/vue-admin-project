@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="showAside" @click="toggleClick">
+  <div class="clearfix">
+    <div class="showAside pull-left" @click="toggleClick">
       <i class="el-icon-menu"></i>
     </div>
   </div>

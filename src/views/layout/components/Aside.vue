@@ -6,8 +6,7 @@
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
-      text-color="#fff"
-      active-text-color="#ffd04b"
+      active-text-color="#bdb7ff"
       router
     >
       <template v-for="item in items">
@@ -161,9 +160,14 @@ export default {
   left: 0;
   z-index: 1001;
   overflow: hidden;
-  .el-menu{
-    background: linear-gradient(top,#8c6bc7,#3b3266);
-  }
+  // .el-menu{
+  //   background: linear-gradient(to bottom,#8c6bc7,#3b3266);
+  //   .el-submenu{
+  //     &:hover{
+  //       background: $base-color;
+  //     }
+  //   }
+  // }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 180px;
     height: 100%;
