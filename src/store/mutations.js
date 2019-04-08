@@ -1,8 +1,7 @@
 const mutations = {
     //保存token
     COMMIT_TOKEN(state, object) {
-        state.access_token = object.data.access_token;
-        state.role_id = object.data.role_id
+        state.token = object.token;
     },
     //保存标签
     TAGES_LIST(state, arr) {

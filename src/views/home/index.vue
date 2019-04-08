@@ -94,32 +94,60 @@
         </div>
       </el-col>
     </el-row>
-    <div class="main-center clearfix">
-      <div class="pull-left center-left">
-        <ul>
-          <li class="accout">我的账户</li>
-          <li class="tou">
-            <img src="../../assets/img/tou.jpg" />
-            <br>
-            <span>zyh
-              <br>
-              <span>超级管理员</span>
-            </span>
-          </li>
-          <li class="mobile">手机号：18111111111</li>
-          <!-- <li class="username">用户名：zyh</li> -->
-          <li class="time">系统版本：1.0.0</li>
-          <li class="time">天气：晴</li>
-          <li class="time">当前时间：2019-03-05</li>
-          <li class="time">上次登陆：2019-03-05</li>
-        </ul>
-      </div>
-    </div>
+    <el-row :gutter="40">
+      <el-col :lg="5" :sm="8" :xs="24">
+        <div class="main-center clearfix">
+          <div class="pull-left center-left">
+            <ul>
+              <li class="accout">我的账户</li>
+              <li class="tou">
+                <img src="../../assets/img/tou.jpg">
+                <br>
+                <span>
+                  zyh
+                  <br>
+                  <span>超级管理员</span>
+                </span>
+              </li>
+              <li class="mobile">手机号：18111111111</li>
+              <!-- <li class="username">用户名：zyh</li> -->
+              <li class="time">系统版本：1.0.0</li>
+              <li class="time">天气：晴</li>
+              <li class="time">当前时间：2019-03-05</li>
+              <li class="time">上次登陆：2019-03-05</li>
+            </ul>
+          </div>
+        </div>
+      </el-col>
+      <el-col :lg="19" :sm="16" :xs="24">
+        <div id="charts" ref="charts"></div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="40">
+      <el-col :lg="12">
+        <el-table :data="tableData" style="width: 100%" class="users">
+          <el-table-column prop="name" label="用户名" width="180"></el-table-column>
+          <el-table-column prop="date" label="日期" width="180"></el-table-column>
+          <el-table-column prop="address" label="地址"></el-table-column>
+        </el-table>
+      </el-col>
+      <el-col :lg="12">
+        <div class="todulist">
+          <div class="item" v-for="(item,i) in todulist" :key="i" @click="toDo(item,i)">
+            <!-- <input type="checkbox" :checked="item.checked" class="ipcont"> -->
+            <el-checkbox v-model="item.checked"></el-checkbox>
+            <span :class="item.checked?'done':''">{{item.todo}}</span>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
 // 数字滚动插件
 import countTo from "vue-count-to";
+//引入echarts 插件
+import echarts from "echarts";
 export default {
   name: "home",
   components: { countTo },
@@ -128,8 +156,113 @@ export default {
       user: {
         startVal: 0,
         endVal: 10951
-      }
+      },
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        }
+      ],
+      todulist: [
+        {
+          checked: true,
+          todo: "学习"
+        },
+        {
+          checked: true,
+          todo: "吃饭"
+        },
+        {
+          checked: false,
+          todo: "睡觉"
+        },
+        {
+          checked: true,
+          todo: "看电视"
+        },
+        {
+          checked: true,
+          todo: "打篮球"
+        }
+      ]
     };
+  },
+  mounted() {
+    this.drawChart();
+    this.init();
+  },
+  methods: {
+    init() {
+      //图表自适应
+      window.onresize = () => {
+        if (this.$refs.charts) {
+          echarts.init(this.$refs.charts).resize();
+        }
+      };
+    },
+    drawChart() {
+      let myChart = echarts.init(this.$refs.charts);
+      let option = {
+        title: {
+          text: "一周访问量",
+          x: "center",
+          textStyle: {
+            fontSize: 16
+          }
+        },
+        legend: {
+          data: ["访问量"]
+        },
+        tooltip: {
+          trigger: "axis",
+          formatter: "{b}<br>访问量{c}"
+        },
+        xAxis: {
+          type: "category",
+          data: ["04-02", "04-03", "04-03", "04-04", "04-05", "04-06", "04-07"]
+        },
+        yAxis: {
+          type: "value"
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            itemStyle: {
+              normal: {
+                //折点颜色
+                color: "#bdb7ff",
+                //折线颜色
+                lineStyle: {
+                  color: "#bdb7ff"
+                }
+              }
+            },
+            type: "line"
+          }
+        ]
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    },
+    toDo(item, i) {
+      this.$set(this.todulist[i], "checked", item.checked ? false : true);
+    }
   }
 };
 </script>
@@ -213,10 +346,11 @@ export default {
     }
   }
   .main-center {
+    width: 100%;
     margin-top: 20px;
   }
   .center-left {
-    width: 300px;
+    width: 100%;
     text-align: center;
     background: $base-white;
     font-size: 16px;
@@ -224,7 +358,7 @@ export default {
     padding-bottom: 60px;
     -webkit-box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
     box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.05);      
+    border-color: rgba(0, 0, 0, 0.05);
     .accout {
       text-align: left;
       margin: 20px;
@@ -240,8 +374,38 @@ export default {
         line-height: 25px;
       }
     }
-    .mobile,.time {
+    .mobile,
+    .time {
       line-height: 30px;
+    }
+  }
+  #charts {
+    // width: 100%;
+    height: 426px;
+    background: $base-white;
+    margin-top: 20px;
+    padding-top: 20px;
+    -webkit-box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+  .users {
+    margin-top: 20px;
+  }
+  .todulist {
+    background: $base-white;
+    margin-top: 20px;
+    .item {
+      line-height: 46px;
+      border-bottom: 1px solid #ededed;
+      text-align: left;
+      padding-left: 40px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .done {
+      text-decoration: line-through;
+      color: gray;
     }
   }
 }

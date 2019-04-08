@@ -1,26 +1,30 @@
 <template>
   <div class="login-container">
     <div class="login-form">
-      <h3>后台管理系统</h3>
-      <el-form
-        :model="ruleForm2"
-        status-icon
-        :rules="rules2"
-        ref="ruleForm2"
-        label-width="100px"
-        class="login-ruleForm"
-      >
-        <el-form-item label="用户名" prop="username">
-          <el-input v-model="ruleForm2.username"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="ruleForm2.password" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-          <el-button @click="resetForm('ruleForm2')">重置</el-button>
-        </el-form-item>
-      </el-form>
+    <el-row :gutter="20">
+      <el-col :lg="6" :sm="10" class="aa">
+          <h3>后台管理系统</h3>
+          <el-form
+            :model="ruleForm2"
+            status-icon
+            :rules="rules2"
+            ref="ruleForm2"
+            label-width="100px"
+            class="login-ruleForm"
+          >
+            <el-form-item label="用户名" prop="username">
+              <el-input v-model="ruleForm2.username"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="password">
+              <el-input type="password" v-model="ruleForm2.password" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+              <el-button @click="resetForm('ruleForm2')">重置</el-button>
+            </el-form-item>
+          </el-form>
+      </el-col>
+    </el-row>
     </div>
   </div>
 </template>
@@ -66,12 +70,13 @@ export default {
             .then(res => {
               //提交数据到vuex
               this.$store.commit("COMMIT_TOKEN", res);
+              this.$message('success',res.message)
               this.$router.push({
                 path: "/"
               });
             })
             .catch(err => {
-              messages("error", err.err_msg);
+              this.$message("error", err.message);
             });
         } else {
           return false;
@@ -90,13 +95,21 @@ export default {
   width: 100%;
   height: 100%;
   position: fixed;
+  display: table;
   .login-form {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
     color: white;
-    width: 500px;
-    position: absolute;
-    left: 45%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 18px;
+    .aa{
+      margin: auto;
+      float: none;
+    }
+    h3{
+      line-height: 60px;
+      margin-left: 100px
+    }
   }
 }
 </style>

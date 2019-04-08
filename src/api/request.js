@@ -21,8 +21,8 @@ axios.interceptors.request.use(
             text: "正在加载中......",
             fullscreen: true
         });
-        if (store.state.access_token) {
-            config.headers["Authorization"] = "Bearer " + store.state.access_token;
+        if (store.state.token) {
+            config.headers["Authorization"] = "Bearer " + store.state.token;
         }
         return config;
     },
@@ -44,7 +44,7 @@ axios.interceptors.response.use(
             const res = response.data;
             if (res.err_code === 0) {
                 resolve(res)
-            } else {
+            } else{
                 reject(res)
             }
         })
@@ -71,17 +71,17 @@ axios.interceptors.response.use(
         const status = error.response.status;
         switch (status) {
             case 500:
-                messages("error", "服务器内部错误，详情请咨询聚保服务热线:40080-59680");
+                messages("error", "服务器内部错误");
                 break;
             case 404:
                 messages(
                     "error",
-                    "未找到远程服务器，详情请咨询聚保服务热线:40080-59680"
+                    "未找到远程服务器"
                 );
                 break;
-            case 403:
+            case 401:
                 messages("warning", "用户登陆过期，请重新登陆");
-                localStorage.removeItem("access_token");
+                localStorage.removeItem("token");
                 setTimeout(() => {
                     router.replace({
                         path: "/login",
