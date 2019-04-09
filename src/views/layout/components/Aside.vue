@@ -134,6 +134,7 @@ export default {
   },
   computed: {
     onRoutes() {
+      console.log(this.$route.path.replace("/", ""))
       return this.$route.path.replace("/", "");
     },
     ...mapState(["isCollapse"])
@@ -160,14 +161,6 @@ export default {
   left: 0;
   z-index: 1001;
   overflow: hidden;
-  // .el-menu{
-  //   background: linear-gradient(to bottom,#8c6bc7,#3b3266);
-  //   .el-submenu{
-  //     &:hover{
-  //       background: $base-color;
-  //     }
-  //   }
-  // }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 180px;
     height: 100%;

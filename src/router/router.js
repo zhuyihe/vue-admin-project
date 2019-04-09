@@ -85,7 +85,7 @@ const myRouter=new Router({
     }
   ]
 })
-//判断是否存在access_token
+//判断是否存在token
 myRouter.beforeEach((to,from,next)=>{
   NProgress.start()
   if (to.path !== '/login' && !store.state.token) {

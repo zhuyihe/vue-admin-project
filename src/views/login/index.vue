@@ -29,7 +29,7 @@
   </div>
 </template>
 <script>
-import { login } from "@//api/api.js";
+// import { login } from "@/api/api.js";
 import { messages } from "@/assets/js/common.js";
 export default {
   name: "login",
@@ -53,8 +53,8 @@ export default {
     };
     return {
       ruleForm2: {
-        password: "",
-        username: ""
+        password: "admin",
+        username: "admin"
       },
       rules2: {
         password: [{ validator: validatePass, trigger: "blur" }],
@@ -66,18 +66,21 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          login(this.ruleForm2)
-            .then(res => {
-              //提交数据到vuex
-              this.$store.commit("COMMIT_TOKEN", res);
-              this.$message('success',res.message)
-              this.$router.push({
+          this.$router.push({
                 path: "/"
               });
-            })
-            .catch(err => {
-              this.$message("error", err.message);
-            });
+          // login(this.ruleForm2)
+          //   .then(res => {
+          //     //提交数据到vuex
+          //     this.$store.commit("COMMIT_TOKEN", res);
+          //     this.$message('success',res.message)
+          //     this.$router.push({
+          //       path: "/"
+          //     });
+          //   })
+          //   .catch(err => {
+          //     this.$message("error", err.message);
+          //   });
         } else {
           return false;
         }

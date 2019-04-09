@@ -1,6 +1,5 @@
 import axios from "axios";
 import router from "../router/router";
-import QS from "qs";
 import {
     Loading
 } from "element-ui";

@@ -105,7 +105,7 @@ export default {
       this.fullscreen = !this.fullscreen;
     }
   }
-};
+}; 
 </script>
 <style lang="scss" scoped>
 .head-container {
