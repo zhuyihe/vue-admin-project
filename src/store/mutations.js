@@ -1,3 +1,4 @@
+
 const mutations = {
     //保存token
     COMMIT_TOKEN(state, object) {
@@ -9,6 +10,14 @@ const mutations = {
     },
     IS_COLLAPSE(state, bool) {
         state.isCollapse = bool;
+    },
+    //保存用户
+    COMMIT_ROLE(state,roles){
+        state.roles=roles
+    },
+    //保存路由
+    COMMIT_ROUTERS(state,routers){
+        state.addRouters=routers
     }
 }
 export default mutations

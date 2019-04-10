@@ -207,6 +207,9 @@ export default {
     this.drawChart();
     this.init();
   },
+  destroyed(){
+    window.onresize=null
+  },
   methods: {
     init() {
       //图表自适应

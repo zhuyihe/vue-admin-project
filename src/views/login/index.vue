@@ -66,8 +66,12 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
+          //这里模拟管理员以及用户两种权限,一般的都是登陆后接口传过来
+          let roles=[]
+          roles.push(this.ruleForm2.username)
+          this.$store.commit("COMMIT_ROLE", roles);
           this.$router.push({
-                path: "/"
+                path: "/home"
               });
           // login(this.ruleForm2)
           //   .then(res => {

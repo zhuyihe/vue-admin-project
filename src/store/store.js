@@ -13,5 +13,14 @@ export default new Vuex.Store({
   mutations,
   actions,
   getters,
-  plugins: [createPersistedState()]
+  plugins: [createPersistedState({
+    reducer(val) {
+      return {
+        // 只储存state中的token
+        token: val.token,
+        roles:val.roles,
+        addRouters:val.addRouters
+      }
+    }
+  })]
 })

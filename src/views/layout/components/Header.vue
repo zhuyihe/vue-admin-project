@@ -75,7 +75,7 @@ export default {
     },
     // 用户名下拉菜单选择事件
     logout(command) {
-      this.$router.push("/login");
+      this.$router.push("/login?v="+new Date().getTime());
     },
     // 全屏事件
     handleFullScreen() {
