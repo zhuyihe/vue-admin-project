@@ -18,8 +18,7 @@ export default new Vuex.Store({
       return {
         // 只储存state中的token
         token: val.token,
-        roles:val.roles,
-        addRouters:val.addRouters
+        roles: val.roles
       }
     }
   })]

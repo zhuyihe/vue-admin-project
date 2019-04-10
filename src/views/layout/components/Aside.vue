@@ -41,103 +41,23 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import { menu } from "@/assets/js/menu";
 export default {
   data() {
-    return {
-      items: [
-        {
-          icon: "el-icon-edit-outline",
-          index: "home",
-          title: "系统首页"
-        },
-        {
-          icon: "el-icon-edit-outline",
-          index: "icon",
-          title: "自定义图标"
-        },
-        {
-          icon: "el-icon-edit-outline",
-          index: "component",
-          title: "组件",
-          subs: [
-            {
-              index: "editor",
-              title: "富文本编译器"
-            },
-            {
-              index: "countTo",
-              title: "数字滚动"
-            },
-            {
-              index: "trees",
-              title: "树形控件",
-              subs: [
-                {
-                  index: "tree",
-                  title: "自定义树"
-                },
-                {
-                  index: "treeSelect",
-                  title: "下拉树"
-                }
-                // ,{
-                //   index:'treeTable',
-                //   title:'表格树',
-                // }
-              ]
-            },
-          ]
-        },
-        {
-          icon: "el-icon-edit-outline",
-          index: "draggable",
-          title: "拖拽",
-          subs: [
-            {
-              index: "draglist",
-              title: "拖拽列表"
-            },
-            {
-              index: "dragtable",
-              title: "拖拽表格"
-            }
-          ]
-        },
-        {
-          icon: "el-icon-edit-outline",
-          index: "charts",
-          title: "图表",
-          subs: [
-            {
-              index: "cricle",
-              title: "饼图"
-            },
-          ]
-        },
-        {
-          icon: "el-icon-edit-outline",
-          index: "7",
-          title: "错误处理",
-          subs: [
-            {
-              index: "permission",
-              title: "权限测试"
-            },
-            {
-              index: "404",
-              title: "404页面"
-            }
-          ]
-        },
-      ]
-    };
+    return {};
+  },
+  mounted() {
+    console.log();
   },
   computed: {
     onRoutes() {
-      console.log(this.$route.path.replace("/", ""))
       return this.$route.path.replace("/", "");
     },
-    ...mapState(["isCollapse"])
+    ...mapState(["isCollapse"]),
+    items() {
+      let items = this.filterAsyncRouter(menu, this.$store.state.roles);
+      return items;
+    }
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -145,6 +65,38 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    /**
+     * 通过meta.role判断是否与当前用户权限匹配
+     * @param roles
+     * @param menu
+     */
+    hasPermission(roles, menu) {
+      if (menu.meta && menu.meta.roles) {
+        return roles.some(role => menu.meta.roles.includes(role));
+      } else {
+        return true;
+      }
+    },
+    /**
+     * 递归过滤异步路由表，返回符合用户角色权限的路由表
+     * @param menus asyncRouterMap
+     * @param roles
+     */
+    filterAsyncRouter(menus, roles) {
+      const res = [];
+      menus.forEach(route => {
+        const tmp = { ...route };
+        // console.log(this.hasPermission(roles, tmp));
+        if (this.hasPermission(roles, tmp)) {
+          console.log(tmp.subs);
+          if (tmp.subs) {
+            tmp.subs = this.filterAsyncRouter(tmp.subs, roles);
+          }
+          res.push(tmp);
+        }
+      });
+      return res;
     }
   }
 };

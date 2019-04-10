@@ -1,7 +1,2 @@
-const getters={
-    addRouters(state){
-        // console.log(state)
-        return state.addRouters
-    }
-}
+const getters = {}
 export default getters
