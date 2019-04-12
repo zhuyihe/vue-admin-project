@@ -119,16 +119,19 @@ const myRouter = new Router({
     }
   ]
 })
-
+ 
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
-  // console.log(to)
   NProgress.start()
   if (to.path !== '/login' && !store.state.token) {
     next('/login')
     NProgress.done() // 结束Progress
+  }else if(to.meta.roles){
+    console.log(1)
+    to.meta.roles.includes(...store.state.roles)?next():next('/403')
+  }else{
+    next();
   }
-  next()
 })
 
 myRouter.afterEach(() => {

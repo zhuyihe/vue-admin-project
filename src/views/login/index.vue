@@ -22,6 +22,8 @@
               <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
               <el-button @click="resetForm('ruleForm2')">重置</el-button>
             </el-form-item>
+            <div class='acount'>账号：admin&nbsp;&nbsp;密码：随意</div>
+            <div class='acount'>账号：user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：随意</div>
           </el-form>
       </el-col>
     </el-row>
@@ -116,6 +118,9 @@ export default {
     h3{
       line-height: 60px;
       margin-left: 100px
+    }
+    .acount{
+      text-align: left
     }
   }
 }

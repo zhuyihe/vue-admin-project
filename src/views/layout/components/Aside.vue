@@ -89,7 +89,7 @@ export default {
         const tmp = { ...route };
         // console.log(this.hasPermission(roles, tmp));
         if (this.hasPermission(roles, tmp)) {
-          console.log(tmp.subs);
+          // console.log(tmp.subs);
           if (tmp.subs) {
             tmp.subs = this.filterAsyncRouter(tmp.subs, roles);
           }
