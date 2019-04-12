@@ -41,7 +41,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import { menu } from "@/assets/js/menu";
+import { menu } from "@/menu";
 export default {
   data() {
     return {};

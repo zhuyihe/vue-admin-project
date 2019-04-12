@@ -28,10 +28,17 @@ const myRouter = new Router({
           }
         },
         {
-          path: '/icon',
-          component: getComponent('icons', 'index'),
+          path: '/elementIcom',
+          component: getComponent('icons', 'elementIcom'),
           meta: {
-            title: '自定义图标'
+            title: 'element'
+          }
+        },
+        {
+          path: '/iconfont',
+          component: getComponent('icons', 'iconfont'),
+          meta: {
+            title: 'iconfont'
           }
         },
         {
@@ -122,13 +129,17 @@ const myRouter = new Router({
  
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
+  console.log(store.getters.roles)
   NProgress.start()
   if (to.path !== '/login' && !store.state.token) {
     next('/login')
     NProgress.done() // 结束Progress
-  }else if(to.meta.roles){
+  } else{
+    next();
+  }
+  if(to.meta.roles){
     console.log(1)
-    to.meta.roles.includes(...store.state.roles)?next():next('/403')
+    to.meta.roles.includes(...store.getters.roles)?next():next('/403')
   }else{
     next();
   }

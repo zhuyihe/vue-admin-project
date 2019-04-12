@@ -3,7 +3,7 @@
         <img src="../../assets/img/404.png" alt="">
         <p class="errCode">你所访问的页面不存在</p>
         <div class="error-handle">
-          <router-link to="/">
+          <router-link to="/home">
             <el-button type="primary" size="large">返回首页</el-button>
           </router-link>
           <el-button class="error-btn" type="primary" size="large" @click="back">返回上一页</el-button>

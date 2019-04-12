@@ -7,7 +7,14 @@ export const menu = [{
     {
         icon: "el-icon-edit-outline",
         index: "icon",
-        title: "自定义图标"
+        title: "图标",
+        subs:[{
+            index: "elementIcom",
+            title: "element"
+        },{
+            index: "iconfont",
+            title: "iconfont"
+        }]
     },
     {
         icon: "el-icon-edit-outline",
