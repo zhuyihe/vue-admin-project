@@ -6,6 +6,7 @@
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
+      @select="select"
       active-text-color="#bdb7ff"
       router
     >
@@ -18,7 +19,10 @@
             </template>
             <template v-for="subItem in item.subs">
               <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                <template slot="title">{{ subItem.title }}</template>
+                <template slot="title">
+                  <i :class="subItem.icon"></i>
+                  <span slot="title">{{ subItem.title }}</span>
+                </template>
                 <el-menu-item
                   v-for="(threeItem,i) in subItem.subs"
                   :key="i"
@@ -61,10 +65,10 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     /**
      * 通过meta.role判断是否与当前用户权限匹配
@@ -87,9 +91,7 @@ export default {
       const res = [];
       menus.forEach(route => {
         const tmp = { ...route };
-        // console.log(this.hasPermission(roles, tmp));
         if (this.hasPermission(roles, tmp)) {
-          // console.log(tmp.subs);
           if (tmp.subs) {
             tmp.subs = this.filterAsyncRouter(tmp.subs, roles);
           }
@@ -97,6 +99,9 @@ export default {
         }
       });
       return res;
+    },
+    select(index, indexPath) {
+      // console.log(index, indexPath);
     }
   }
 };

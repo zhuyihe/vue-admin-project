@@ -18,7 +18,7 @@ const myRouter = new Router({
       component: getComponent('login', 'index')
     },
     {
-      path: '/',
+      path: '/home',
       component: getComponent('layout', 'Layout'),
       children: [{
           path: '/home',
@@ -106,6 +106,13 @@ const myRouter = new Router({
           }
         },
         {
+          path: '/permissionBtn',
+          component: getComponent('permission', 'permissionBtn'),
+          meta: {
+            title: '按钮权限',
+          }
+        },
+        {
           path: '/404',
           component: getComponent('error', '404'),
           meta: {
@@ -126,21 +133,19 @@ const myRouter = new Router({
     }
   ]
 })
- 
+
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
-  console.log(store.getters.roles)
   NProgress.start()
   if (to.path !== '/login' && !store.state.token) {
     next('/login')
     NProgress.done() // 结束Progress
-  } else{
+  } else {
     next();
   }
-  if(to.meta.roles){
-    console.log(1)
-    to.meta.roles.includes(...store.getters.roles)?next():next('/403')
-  }else{
+  if (to.meta.roles) {
+    to.meta.roles.includes(...store.getters.roles) ? next() : next('/403')
+  } else {
     next();
   }
 })

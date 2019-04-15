@@ -1,23 +1,23 @@
 //全部菜单
 export const menu = [{
-        icon: "el-icon-edit-outline",
+        icon: "el-icon-news",
         index: "home",
         title: "系统首页"
     },
     {
-        icon: "el-icon-edit-outline",
+        icon: "el-icon-edit",
         index: "icon",
         title: "图标",
-        subs:[{
+        subs: [{
             index: "elementIcom",
             title: "element"
-        },{
+        }, {
             index: "iconfont",
             title: "iconfont"
         }]
     },
     {
-        icon: "el-icon-edit-outline",
+        icon: "el-icon-setting",
         index: "component",
         title: "组件",
         subs: [{
@@ -31,6 +31,7 @@ export const menu = [{
             {
                 index: "trees",
                 title: "树形控件",
+                icon: 'el-icon-share',
                 subs: [{
                         index: "tree",
                         title: "自定义树"
@@ -44,7 +45,7 @@ export const menu = [{
         ]
     },
     {
-        icon: "el-icon-edit-outline",
+        icon: "el-icon-rank",
         index: "draggable",
         title: "拖拽",
         subs: [{
@@ -58,7 +59,7 @@ export const menu = [{
         ]
     },
     {
-        icon: "el-icon-edit-outline",
+        icon: "el-icon-document",
         index: "charts",
         title: "图表",
         subs: [{
@@ -67,7 +68,7 @@ export const menu = [{
         }]
     },
     {
-        icon: "el-icon-edit-outline",
+        icon: "el-icon-warning",
         index: "7",
         title: "错误处理",
         subs: [{

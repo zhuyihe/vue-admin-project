@@ -30,7 +30,7 @@
 </template>
 <script>
 import { messages } from "@/assets/js/common.js";
-import { constants } from 'crypto';
+import { constants } from "crypto";
 // import { mapState } from "vuex";
 export default {
   created() {
@@ -93,10 +93,10 @@ export default {
         }
       }
     },
-    closeTags(index,path) {
-      if(path === this.$route.fullPath){
+    closeTags(index, path) {
+      if (path === this.$route.fullPath) {
         messages("warning", "不可关闭选中标签");
-        return
+        return;
       }
       if (this.tagsList.length == 1) {
         messages("warning", "不可全都关闭");

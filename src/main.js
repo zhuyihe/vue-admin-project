@@ -6,6 +6,7 @@ import './plugins/element.js'
 import './assets/css/normalize.css'
 import './assets/css/public.css'
 import '@/element-variables.scss'
+import pass from '@/derective/premissionBtn'
 import {
   messages
 } from './assets/js/common'
