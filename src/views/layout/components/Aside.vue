@@ -1,42 +1,58 @@
 <template>
   <div class="aside">
-    <el-menu
-      :default-active="onRoutes"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-      active-text-color="#bdb7ff"
-      router
-    >
-      <template v-for="item in items">
-        <template v-if="item.subs">
-          <el-submenu :index="item.index" :key="item.index">
-            <template slot="title">
+    <el-scrollbar wrap-class="scrollbar-wrapper">
+      <el-menu
+        :default-active="onRoutes"
+        class="el-menu-vertical-demo"
+        @open="handleOpen"
+        @close="handleClose"
+        :collapse="isCollapse"
+        @select="select"
+        active-text-color="#bdb7ff"
+        router
+      >
+        <template v-for="item in items">
+          <template v-if="item.subs">
+            <el-submenu :index="item.index" :key="item.index">
+              <template slot="title">
+                <i :class="item.icon"></i>
+                <span slot="title">{{ item.title }}</span>
+              </template>
+              <template v-for="subItem in item.subs">
+                <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
+                  <template slot="title">
+                    <i :class="subItem.icon"></i>
+                    <span slot="title">{{ subItem.title }}</span>
+                  </template>
+                  <el-menu-item
+                    v-for="(threeItem,i) in subItem.subs"
+                    :key="i"
+                    :index="threeItem.index"
+                  >{{ threeItem.title }}</el-menu-item>
+                </el-submenu>
+                <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}</el-menu-item>
+              </template>
+            </el-submenu>
+          </template>
+          <template v-else>
+            <el-menu-item
+              :index="item.index"
+              :key="item.index"
+              v-if="item.index.indexOf('http')==-1"
+            >
               <i :class="item.icon"></i>
               <span slot="title">{{ item.title }}</span>
-            </template>
-            <template v-for="subItem in item.subs">
-              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                <template slot="title">{{ subItem.title }}</template>
-                <el-menu-item
-                  v-for="(threeItem,i) in subItem.subs"
-                  :key="i"
-                  :index="threeItem.index"
-                >{{ threeItem.title }}</el-menu-item>
-              </el-submenu>
-              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}</el-menu-item>
-            </template>
-          </el-submenu>
+            </el-menu-item>
+            <a :href="item.index" target="_blank" v-else :key="item.index">
+              <el-menu-item>
+                <i :class="item.icon"></i>
+                <span slot="title">{{ item.title }}</span>
+              </el-menu-item>
+            </a>
+          </template>
         </template>
-        <template v-else>
-          <el-menu-item :index="item.index" :key="item.index">
-            <i :class="item.icon"></i>
-            <span slot="title">{{ item.title }}</span>
-          </el-menu-item>
-        </template>
-      </template>
-    </el-menu>
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 <script>
@@ -47,7 +63,6 @@ export default {
     return {};
   },
   mounted() {
-    console.log();
   },
   computed: {
     onRoutes() {
@@ -61,10 +76,10 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     /**
      * 通过meta.role判断是否与当前用户权限匹配
@@ -87,9 +102,7 @@ export default {
       const res = [];
       menus.forEach(route => {
         const tmp = { ...route };
-        // console.log(this.hasPermission(roles, tmp));
         if (this.hasPermission(roles, tmp)) {
-          // console.log(tmp.subs);
           if (tmp.subs) {
             tmp.subs = this.filterAsyncRouter(tmp.subs, roles);
           }
@@ -97,6 +110,9 @@ export default {
         }
       });
       return res;
+    },
+    select(index, indexPath) {
+      console.log(index, indexPath);
     }
   }
 };

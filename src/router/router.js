@@ -18,7 +18,7 @@ const myRouter = new Router({
       component: getComponent('login', 'index')
     },
     {
-      path: '/',
+      path: '/home',
       component: getComponent('layout', 'Layout'),
       children: [{
           path: '/home',
@@ -133,14 +133,14 @@ const myRouter = new Router({
     }
   ]
 })
- 
+
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
   NProgress.start()
   if (to.path !== '/login' && !store.state.token) {
     next('/login')
     NProgress.done() // 结束Progress
-  } else{
+  } else {
     next();
   }
   if(to.meta.roles){

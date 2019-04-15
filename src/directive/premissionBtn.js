@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import store from '@/store/store'
-const allowed = Vue.directive('allowed', {
+ Vue.directive('allowed', {
     inserted: function (el, bingding) {
         let roles = store.getters.roles
         //判断权限
@@ -16,5 +16,3 @@ const allowed = Vue.directive('allowed', {
         }
     }
 })
-
-export { allowed }
