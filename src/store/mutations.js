@@ -1,3 +1,6 @@
+import {
+    myRouter
+} from '@/router/router'
 const mutations = {
     //保存token
     COMMIT_TOKEN(state, object) {
@@ -9,6 +12,10 @@ const mutations = {
     },
     IS_COLLAPSE(state, bool) {
         state.isCollapse = bool;
+    },
+    //保存用户
+    COMMIT_ROLE(state, roles) {
+        state.roles = roles
     }
 }
 export default mutations

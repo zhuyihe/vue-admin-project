@@ -64,7 +64,6 @@ export default {
         return this.$store.state.isCollapse;
       },
       set: function(newValue) {
-        console.log(newValue);
         this.$store.commit("IS_COLLAPSE", newValue);
       }
     }
@@ -75,6 +74,7 @@ export default {
     },
     // 用户名下拉菜单选择事件
     logout(command) {
+      this.$store.commit('TAGES_LIST',[])
       this.$router.push("/login");
     },
     // 全屏事件

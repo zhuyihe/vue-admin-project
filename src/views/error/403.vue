@@ -1,7 +1,7 @@
 <template>
     <div class="err">
-        <img src="../../assets/img/404.png" alt="">
-        <p class="errCode">你所访问的页面不存在</p>
+        <img src="../../assets/img/auth.png" alt="">
+        <p class="errCode">暂时没有权限哦~~</p>
         <div class="error-handle">
           <router-link to="/home">
             <el-button type="primary" size="large">返回首页</el-button>

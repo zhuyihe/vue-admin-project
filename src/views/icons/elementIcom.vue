@@ -48,7 +48,7 @@
       </el-col>
       <el-col :span="4">
         <div class="grid-content bg-purple">
-           <i class="el-icon-sort-up"></i>
+          <i class="el-icon-sort-up"></i>
           <br>
           <el-tooltip content="<i class='el-icon-sort-up'></i>" placement="top">
             <span>el-icon-sort-up</span>
@@ -120,7 +120,7 @@
       </el-col>
       <el-col :span="4">
         <div class="grid-content bg-purple">
-         <i class="el-icon-circle-close"></i>
+          <i class="el-icon-circle-close"></i>
           <br>
           <el-tooltip content="<i class='el-icon-circle-close'></i>" placement="top">
             <span>el-icon-circle-close</span>
@@ -146,8 +146,8 @@
         </div>
       </el-col>
       <el-col :span="4">
-         <div class="grid-content bg-purple">
-         <i class="el-icon-caret-left"></i>
+        <div class="grid-content bg-purple">
+          <i class="el-icon-caret-left"></i>
           <br>
           <el-tooltip content="<i class='el-icon-caret-left'></i>" placement="top">
             <span>el-icon-caret-left</span>
@@ -156,7 +156,7 @@
       </el-col>
       <el-col :span="4">
         <div class="grid-content bg-purple">
-           <i class="el-icon-caret-bottom"></i>
+          <i class="el-icon-caret-bottom"></i>
           <br>
           <el-tooltip content="<i class='el-icon-caret-bottom'></i>" placement="top">
             <span>el-icon-caret-bottom</span>
@@ -174,7 +174,7 @@
       </el-col>
       <el-col :span="4">
         <div class="grid-content bg-purple">
-           <i class="el-icon-caret-right"></i>
+          <i class="el-icon-caret-right"></i>
           <br>
           <el-tooltip content="<i class='el-icon-caret-right'></i>" placement="top">
             <span>el-icon-caret-right</span>
