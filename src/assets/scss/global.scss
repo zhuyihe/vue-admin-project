@@ -12,5 +12,9 @@ $base-666:#666;
     height: 100%;
     .scrollbar-wrapper {
         overflow-x: hidden !important;
+        .el-scrollbar__view{
+            // height: 100%;
+            overflow-x: hidden !important;
+        }
     }
 }
