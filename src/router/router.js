@@ -101,8 +101,15 @@ const myRouter = new Router({
           path: '/permission',
           component: getComponent('permission', 'permission'),
           meta: {
-            title: '权限测试',
+            title: '菜单权限',
             roles: ['admin']
+          }
+        },
+        {
+          path: '/permissionBtn',
+          component: getComponent('permission', 'permissionBtn'),
+          meta: {
+            title: '按钮权限',
           }
         },
         {
@@ -129,7 +136,6 @@ const myRouter = new Router({
  
 //判断是否存在token
 myRouter.beforeEach((to, from, next) => {
-  console.log(store.getters.roles)
   NProgress.start()
   if (to.path !== '/login' && !store.state.token) {
     next('/login')
@@ -138,8 +144,7 @@ myRouter.beforeEach((to, from, next) => {
     next();
   }
   if(to.meta.roles){
-    console.log(1)
-    to.meta.roles.includes(...store.getters.roles)?next():next('/403')
+    to.meta.roles.includes(...store.getters.roles)?next():next('/404')
   }else{
     next();
   }
