@@ -70,7 +70,7 @@ export default {
     },
     ...mapState(["isCollapse"]),
     items() {
-      let items = this.filterAsyncRouter(menu, this.$store.state.roles);
+      let items = this.filterMenus(menu, this.$store.state.roles);
       return items;
     }
   },
@@ -94,17 +94,17 @@ export default {
       }
     },
     /**
-     * 递归过滤异步路由表，返回符合用户角色权限的路由表
-     * @param menus asyncRouterMap
-     * @param roles
+     * @param {Arrary} menus 菜单
+     * @param {Arrary} roles 角色
+     * @return {Arrary} res 过滤后的菜单
      */
-    filterAsyncRouter(menus, roles) {
+    filterMenus(menus, roles) {
       const res = [];
       menus.forEach(route => {
         const tmp = { ...route };
         if (this.hasPermission(roles, tmp)) {
           if (tmp.subs) {
-            tmp.subs = this.filterAsyncRouter(tmp.subs, roles);
+            tmp.subs = this.filterMenus(tmp.subs, roles);
           }
           res.push(tmp);
         }
