@@ -94,16 +94,18 @@ export default {
       }
     },
     closeTags(index, path) {
-      if (path === this.$route.fullPath) {
-        messages("warning", "不可关闭选中标签");
-        return;
-      }
       if (this.tagsList.length == 1) {
         messages("warning", "不可全都关闭");
       } else {
         //删除当前
         let tags = this.tagsList.splice(index, 1);
         this.$store.commit("TAGES_LIST", this.tagsList);
+      }
+      if (path === this.$route.fullPath) {
+        //如果关闭当前直接跳到下一个
+        this.$router.push(
+          this.$store.state.tagsList[this.$store.state.tagsList.length - 1]
+        );
       }
     }
   }

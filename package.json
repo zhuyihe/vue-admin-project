@@ -21,7 +21,8 @@
     "vue2-editor": "^2.6.6",
     "vuedraggable": "^2.20.0",
     "vuex": "^3.0.1",
-    "vuex-persistedstate": "^2.5.4"
+    "vuex-persistedstate": "^2.5.4",
+    "webpack-cdn-plugin": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
