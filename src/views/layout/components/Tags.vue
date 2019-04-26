@@ -29,8 +29,7 @@
   </div>
 </template>
 <script>
-import { messages } from "@/assets/js/common.js";
-import { constants } from "crypto";
+import { messages } from "@assets/js/common.js";
 // import { mapState } from "vuex";
 export default {
   created() {

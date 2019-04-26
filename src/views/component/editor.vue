@@ -5,12 +5,8 @@
     </div>
 </template>
 <script>
-import { VueEditor } from 'vue2-editor'
 import {upload} from '@/api/api.js'
 export default {
-    components: {
-      VueEditor
-   },
     data() {
        return {
          content: '<h1>你好，zyh</h1>'  

@@ -31,8 +31,8 @@
   </div>
 </template>
 <script>
-// import { login } from "@/api/api.js";
-import { messages } from "@/assets/js/common.js";
+import { login } from "@api";
+import { messages } from "@assets/js/common.js";
 export default {
   name: "login",
   data() {
@@ -65,7 +65,7 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
+     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           //这里模拟管理员以及用户两种权限,一般的都是登陆后接口传过来
@@ -77,6 +77,7 @@ export default {
               });
           // login(this.ruleForm2)
           //   .then(res => {
+          //     console.log(res)
           //     //提交数据到vuex
           //     this.$store.commit("COMMIT_TOKEN", res);
           //     this.$message('success',res.message)
