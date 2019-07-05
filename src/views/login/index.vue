@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <vue-particles color="#fff" :particlesNumber='60' :moveSpeed='1.5' :lineOpacity='0.5' class="bg"></vue-particles>
     <div class="login-form">
     <el-row :gutter="20">
       <el-col :lg="6" :sm="10" class="aa">
@@ -28,6 +29,7 @@
       </el-col>
     </el-row>
     </div>
+    
   </div>
 </template>
 <script>
@@ -100,6 +102,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.bg{
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
 .login-container {
   background: #2d3a4b;
   width: 100%;
