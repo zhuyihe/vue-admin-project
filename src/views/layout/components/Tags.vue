@@ -1,19 +1,21 @@
 <template>
   <!-- 打开标签的容器 -->
   <div class="tags">
-    <ul>
-      <li
-        class="tags-li"
-        v-for="(item,index) in tagsList"
-        :key="index"
-        :class="{'active': isActive(item.path)}"
-      >
-        <router-link :to="item.path" class="tags-li-title">{{item.title}}</router-link>
-        <span class="tags-li-icon" @click="closeTags(index,item.path)">
-          <i class="el-icon-close"></i>
-        </span>
-      </li>
-    </ul>
+    <scroll-pane wrap-class="scrollbar-wrapper">
+      <ul>
+        <li
+          class="tags-li"
+          v-for="(item,index) in tagsList"
+          :key="index"
+          :class="{'active': isActive(item.path)}"
+        >
+          <router-link :to="item.path" class="tags-li-title">{{item.title}}</router-link>
+          <span class="tags-li-icon" @click="closeTags(index,item.path)">
+            <i class="el-icon-close"></i>
+          </span>
+        </li>
+      </ul>
+    </scroll-pane>
     <div class="tags-close-box">
       <el-dropdown @command="handleCommand">
         <el-button size="mini" type="primary">
@@ -31,12 +33,16 @@
 <script>
 import { messages } from "@assets/js/common.js";
 // import { mapState } from "vuex";
+import ScrollPane from "./ScrollPane";
 export default {
   created() {
     //判断标签里面是否有值 有的话直接加载
     if (this.tagsList.length == 0) {
       this.setTags(this.$route);
     }
+  },
+  components: {
+    ScrollPane
   },
   computed: {
     //computed 方法里面没有set方法因此不能使用mapState,需要重新定义set方法
@@ -78,18 +84,13 @@ export default {
       });
       //不存在
       if (!isIn) {
-        // 判断当前的标签个数
-        if (this.tagsList.length >= 10) {
-          messages("warning", "当标签大于10个，请关闭后再打开");
-        } else {
-          this.tagsList.push({
-            title: route.meta.title,
-            path: route.fullPath,
-            name: route.name
-          });
-          //存到vuex
-          this.$store.commit("TAGES_LIST", this.tagsList);
-        }
+        this.tagsList.push({
+          title: route.meta.title,
+          path: route.fullPath,
+          name: route.name
+        });
+        //存到vuex
+        this.$store.commit("TAGES_LIST", this.tagsList);
       }
     },
     closeTags(index, path) {
@@ -113,17 +114,17 @@ export default {
 <style lang="scss" scoped>
 .tags {
   position: relative;
-  // height: 30px;
+  height: 30px;
   overflow: hidden;
   background: $base-white;
-  padding-right: 120px;
+  padding-right: 100px;
   box-shadow: 0 5px 10px #ddd;
   z-index: 10;
 }
 
 .tags ul {
   box-sizing: border-box;
-  width: 100%;
+  width: 1000%;
   height: 100%;
 }
 
@@ -182,6 +183,11 @@ export default {
   background: $base-white;
   box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
   z-index: 10;
+}
+</style>
+<style>
+.tags .el-scrollbar .scrollbar-wrapper .el-scrollbar__view {
+  overflow: initial !important;
 }
 </style>
 
