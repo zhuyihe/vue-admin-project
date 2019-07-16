@@ -4,7 +4,7 @@
     <div class="login-form">
     <el-row :gutter="20">
       <el-col :lg="6" :sm="10" class="aa">
-          <h3>后台管理系统</h3>
+          <h3>{{$t('login.system')}}</h3>
           <el-form
             :model="ruleForm2"
             status-icon
@@ -13,18 +13,18 @@
             label-width="100px"
             class="login-ruleForm"
           >
-            <el-form-item label="用户名" prop="username">
+            <el-form-item :label="$t('login.username')" prop="username">
               <el-input v-model="ruleForm2.username"></el-input>
             </el-form-item>
-            <el-form-item label="密码" prop="password">
-              <el-input type="password" v-model="ruleForm2.password" autocomplete="off"></el-input>
+            <el-form-item :label="$t('login.password')" prop="password">
+              <el-input type="password" v-model="ruleForm2.password" autocomplete="off" show-password></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
               <el-button @click="resetForm('ruleForm2')">重置</el-button>
             </el-form-item>
-            <div class='acount'>账号：admin&nbsp;&nbsp;密码：随意</div>
-            <div class='acount'>账号：user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：随意</div>
+            <div class='acount'><span>{{$t('login.username')}}</span>：admin&nbsp;&nbsp;<span>{{$t('login.password')}}</span>:any</div>
+            <div class='acount'><span>{{$t('login.username')}}</span>：user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{$t('login.password')}}</span>:any</div>
           </el-form>
       </el-col>
     </el-row>

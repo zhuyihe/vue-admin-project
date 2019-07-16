@@ -16,6 +16,9 @@ const mutations = {
     //保存用户
     COMMIT_ROLE(state, roles) {
         state.roles = roles
+    },
+    GET_LANGUAGE(state,lang){
+        state.lang=lang
     }
 }
 export default mutations

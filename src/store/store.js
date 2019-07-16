@@ -20,7 +20,8 @@ export default new Vuex.Store({
         // 只储存state中的token
         token: val.token,
         roles: val.roles,
-        tagsList: val.tagsList
+        tagsList: val.tagsList,
+        lang:val.lang
       }
     }
   })]

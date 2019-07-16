@@ -25,7 +25,7 @@ const myRouter = new Router({
                     path: '/home',
                     component: getComponent('home', 'index'),
                     meta: {
-                        title: '首页'
+                        title: 'home'
                     }
                 },
                 {
@@ -46,70 +46,70 @@ const myRouter = new Router({
                     path: '/editor',
                     component: getComponent('component', 'editor'),
                     meta: {
-                        title: '富文本编译器'
+                        title: 'editor'
                     }
                 },
                 {
                     path: '/countTo',
                     component: getComponent('component', 'countTo'),
                     meta: {
-                        title: '数字滚动'
+                        title: 'countTo'
                     }
                 },
                 {
                     path: '/tree',
                     component: getComponent('component', 'tree'),
                     meta: {
-                        title: '自定义树'
+                        title: 'trees'
                     }
                 },
                 {
                     path: '/treeTable',
                     component: getComponent('component', 'treeTable'),
                     meta: {
-                        title: '表格树'
+                        title: 'treeTable'
                     }
                 },
                 {
                     path: '/treeSelect',
                     component: getComponent('component', 'treeSelect'),
                     meta: {
-                        title: '下拉树'
+                        title: 'treeSelect'
                     }
                 },
                 {
                     path: '/draglist',
                     component: getComponent('draggable', 'draglist'),
                     meta: {
-                        title: '拖拽列表'
+                        title: 'draglist'
                     }
                 },
                 {
                     path: '/dragtable',
                     component: getComponent('draggable', 'dragtable'),
                     meta: {
-                        title: '拖拽表格'
+                        title: 'dragtable'
                     }
                 },
                 {
                     path: '/cricle',
                     component: getComponent('charts', 'cricle'),
                     meta: {
-                        title: '饼图'
+                        title: 'cricle'
                     }
                 },
                 {
                     path: '/formDesign',
                     component: getComponent('formDesign', 'index'),
                     meta: {
-                        title: '表单生成器'
+                        title: 'formDesign'
                     }
                 },
                 {
                     path: '/permission',
                     component: getComponent('permission', 'permission'),
                     meta: {
-                        title: '菜单权限',
+                        title: 'menu',
                         roles: ['admin']
                     }
                 },
@@ -117,7 +117,7 @@ const myRouter = new Router({
                     path: '/permissionBtn',
                     component: getComponent('permission', 'permissionBtn'),
                     meta: {
-                        title: '按钮权限',
+                        title: 'permissionBtn',
                     }
                 },
                 {

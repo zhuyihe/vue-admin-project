@@ -3,7 +3,10 @@
     <el-row>
       <el-col :span="4" v-for="(item,index) in iconfonts" :key="index">
         <div class="grid-content bg-purple">
-          <i :class="`${'iconfont '+item}`"></i>
+          <!-- <i :class="`${'iconfont '+item}`"></i> -->
+          <svg class="icon-font">
+            <use :xlink:href="`${'#'+item}`"></use>
+          </svg>
           <br>
           <el-tooltip :content="item" placement="top">
             <span>{{item}}</span>
@@ -55,6 +58,10 @@ export default {
       display: inline-block;
     }
   }
+}
+.icon-font{
+  width: 32px;
+  height:32px;
 }
 </style>
 

@@ -7,13 +7,15 @@
       <div class="header-user-con">
         <!-- 全屏显示 -->
         <div class="btn-fullscreen" @click="handleFullScreen">
-          <el-tooltip effect="dark" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+          <el-tooltip effect="dark" :content="fullscreen?$t('header.cancelFullScreen'):$t('header.fullScreen')" placement="bottom">
             <i class="el-icon-rank"></i>
           </el-tooltip>
         </div>
+        <!-- 多语言 -->
+        <select-lang></select-lang>
         <!-- 消息中心 -->
         <div class="btn-bell">
-          <el-tooltip effect="dark" :content="message?`有${message}条未读消息`:`消息中心`" placement="bottom">
+          <el-tooltip effect="dark" :content="$t('header.message')" placement="bottom">
             <router-link to="/tabs">
              <i class="el-icon-bell"></i>
              </router-link>
@@ -31,11 +33,11 @@
           </div>
           <el-dropdown-menu slot="dropdown" class="user-dropdown">
             <router-link class="inlineBlock" to="/home">
-              <el-dropdown-item>首页</el-dropdown-item>
+              <el-dropdown-item>{{$t('route.home')}}</el-dropdown-item>
             </router-link>
-            <el-dropdown-item>个人设置</el-dropdown-item>
+            <el-dropdown-item>{{$t('header.setting')}}</el-dropdown-item>
             <el-dropdown-item divided>
-              <span style="display:block;" @click="logout">退出登陆</span>
+              <span style="display:block;" @click="logout">{{$t('header.logout')}}</span>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -45,10 +47,12 @@
 </template>
 <script>
 import showAside from "@/components/showAside.vue";
+import selectLang from './selectLang'
 export default {
   // name:'header',
   components: {
-    showAside
+    showAside,
+    selectLang
   },
   data() {
     return {

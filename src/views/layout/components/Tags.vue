@@ -9,7 +9,7 @@
           :key="index"
           :class="{'active': isActive(item.path)}"
         >
-          <router-link :to="item.path" class="tags-li-title">{{item.title}}</router-link>
+          <router-link :to="item.path" class="tags-li-title">{{$t('route.'+item.title)}}</router-link>
           <span class="tags-li-icon" @click="closeTags(index,item.path)">
             <i class="el-icon-close"></i>
           </span>
@@ -19,11 +19,11 @@
     <div class="tags-close-box">
       <el-dropdown @command="handleCommand">
         <el-button size="mini" type="primary">
-          标签选项
+          {{$t('header.labelOptions')}}
           <i class="el-icon-arrow-down el-icon--right"></i>
         </el-button>
         <el-dropdown-menu size="small" slot="dropdown">
-          <el-dropdown-item command="closeOther">关闭其他</el-dropdown-item>
+          <el-dropdown-item command="closeOther">{{$t('header.closeOthers')}}</el-dropdown-item>
           <!-- <el-dropdown-item command="all">关闭所有</el-dropdown-item> -->
         </el-dropdown-menu>
       </el-dropdown>
@@ -48,6 +48,7 @@ export default {
     //computed 方法里面没有set方法因此不能使用mapState,需要重新定义set方法
     tagsList: {
       get: function() {
+        console.log(this.$store.state.tagsList)
         return this.$store.state.tagsList;
       },
       set: function(newValue) {

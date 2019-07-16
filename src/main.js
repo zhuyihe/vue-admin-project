@@ -2,24 +2,24 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
+import i18n from './lang'
 import './plugins/element.js'
 import './directive/premissionBtn'
 import './assets/css/public.css'
 import './element-variables.scss'
 import FormMaking from '@/views/formDesign/index'
-import {
-    messages
-} from './assets/js/common'
-// import './assets/scss/global.scss'
+import VueParticles from 'vue-particles'
+import { messages } from './assets/js/common'
 // 引入字体文件
 import '@/assets/icon/iconfont.css'
-Vue.config.productionTip = false
-    //全局挂载提示框
-Vue.prototype.$message = messages
-import VueParticles from 'vue-particles'
+import '@/assets/icon/iconfont.js'
 Vue.use(VueParticles)
 Vue.use(FormMaking)
+//全局挂载提示框
+Vue.prototype.$message = messages
+Vue.config.productionTip = false
 new Vue({
+    i18n,
     router,
     store,
     render: h => h(App)
