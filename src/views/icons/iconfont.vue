@@ -2,12 +2,12 @@
   <div class="icon-container">
     <el-row>
       <el-col :span="4" v-for="(item,index) in iconfonts" :key="index">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple" @dblclick="doCopy(item)">
           <!-- <i :class="`${'iconfont '+item}`"></i> -->
           <svg class="icon-font">
-            <use :xlink:href="`${'#'+item}`"></use>
+            <use :xlink:href="`${'#'+item}`" />
           </svg>
-          <br>
+          <br />
           <el-tooltip :content="item" placement="top">
             <span>{{item}}</span>
           </el-tooltip>
@@ -19,10 +19,28 @@
 <script>
 import { iconfont } from "@/assets/js/iconfont";
 export default {
+  mounted() {
+    this.$notify.info({
+      title: "消息",
+      message: "双击剪切"
+    });
+  },
   data() {
     return {
       iconfonts: iconfont
     };
+  },
+  methods: {
+    doCopy(item) {
+      this.$copyText(item)
+        .then(res => {
+          this.$message("success", "复制成功");
+        })
+        .catch(e => {
+          this.$message("error", "复制失败");
+          console.log(e);
+        });
+    }
   }
 };
 </script>
@@ -59,9 +77,9 @@ export default {
     }
   }
 }
-.icon-font{
+.icon-font {
   width: 32px;
-  height:32px;
+  height: 32px;
 }
 </style>
 
