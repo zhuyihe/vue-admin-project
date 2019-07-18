@@ -30,7 +30,11 @@
                     :index="threeItem.index"
                   >{{$t('route.'+threeItem.title) }}</el-menu-item>
                 </el-submenu>
-                <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{$t('route.'+subItem.title) }}</el-menu-item>
+                <el-menu-item
+                  v-else
+                  :index="subItem.index"
+                  :key="subItem.index"
+                >{{$t('route.'+subItem.title) }}</el-menu-item>
               </template>
             </el-submenu>
           </template>
@@ -62,8 +66,7 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-  },
+  mounted() {},
   computed: {
     onRoutes() {
       return this.$route.path.replace("/", "");
@@ -112,11 +115,14 @@ export default {
       return res;
     },
     select(index, indexPath) {
-      // console.log(index, indexPath);
-      if(indexPath.indexOf('home')>-1) return
-      let breadList=['home']
-      breadList.push(...indexPath)
-      this.$store.commit('SET_BREAD',breadList)
+      console.log(index, indexPath);
+      if (indexPath.indexOf("home") > -1) return;
+      if (index!==null) {
+        let breadList = ["home"];
+        breadList.push(...indexPath);
+        console.log(breadList);
+        this.$store.commit("SET_BREAD", breadList);
+      }
     }
   }
 };
