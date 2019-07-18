@@ -2,7 +2,9 @@
   <div class="head-container clearfix">
     <div class="header-left">
       <showAside :toggle-click="toggleClick"/>
+      <breadcrumb />
     </div>
+    
     <div class="header-right">
       <div class="header-user-con">
         <!-- 全屏显示 -->
@@ -46,13 +48,15 @@
   </div>
 </template>
 <script>
-import showAside from "@/components/showAside.vue";
+import showAside from "./showAside";
 import selectLang from './selectLang'
+import breadcrumb from './Breadcrumb'
 export default {
   // name:'header',
   components: {
     showAside,
-    selectLang
+    selectLang,
+    breadcrumb
   },
   data() {
     return {

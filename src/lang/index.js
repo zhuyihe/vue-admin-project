@@ -18,7 +18,6 @@ const messages = {
     ...elEn
   }
 };
-console.log(messages.zh)
 const i18n = new VueI18n({
   locale: store.state.lang,
   messages

@@ -48,7 +48,6 @@ export default {
     //computed 方法里面没有set方法因此不能使用mapState,需要重新定义set方法
     tagsList: {
       get: function() {
-        console.log(this.$store.state.tagsList)
         return this.$store.state.tagsList;
       },
       set: function(newValue) {

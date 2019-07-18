@@ -112,7 +112,11 @@ export default {
       return res;
     },
     select(index, indexPath) {
-      console.log(index, indexPath);
+      // console.log(index, indexPath);
+      if(indexPath.indexOf('home')>-1) return
+      let breadList=['home']
+      breadList.push(...indexPath)
+      this.$store.commit('SET_BREAD',breadList)
     }
   }
 };

@@ -19,7 +19,7 @@ const zh={
         draglist:'拖拽列表',
         dragtable:'拖拽表格',
         cricle:'饼图',
-        menu:'菜单测试',
+        permissionMenu:'菜单测试',
         permissionBtn:'按钮测试',
         '404':'404'
     },

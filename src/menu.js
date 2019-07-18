@@ -11,7 +11,7 @@ export const menu = [
     title: "icon",
     subs: [
       {
-        index: "elementIcom",
+        index: "element",
         title: "element"
       },
       {
@@ -39,7 +39,7 @@ export const menu = [
         icon: "el-icon-share",
         subs: [
           {
-            index: "tree",
+            index: "customTree",
             title: "customTree"
           },
           {
@@ -77,7 +77,7 @@ export const menu = [
     ]
   },
   {
-    icon: "el-icon-news",
+    icon: "el-icon-folder",
     index: "formDesign",
     title: "formDesign"
   },
@@ -87,8 +87,8 @@ export const menu = [
     title: "permission",
     subs: [
       {
-        index: "permission",
-        title: "menu",
+        index: "permissionMenu",
+        title: "permissionMenu",
         meta: {
           roles: ["admin"]
         }

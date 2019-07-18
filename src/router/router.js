@@ -29,7 +29,7 @@ const myRouter = new Router({
                     }
                 },
                 {
-                    path: '/elementIcom',
+                    path: '/element',
                     component: getComponent('icons', 'elementIcom'),
                     meta: {
                         title: 'element'
@@ -57,10 +57,10 @@ const myRouter = new Router({
                     }
                 },
                 {
-                    path: '/tree',
+                    path: '/customTree',
                     component: getComponent('component', 'tree'),
                     meta: {
-                        title: 'trees'
+                        title: 'customTree'
                     }
                 },
                 {
@@ -106,10 +106,10 @@ const myRouter = new Router({
                     }
                 },
                 {
-                    path: '/permission',
+                    path: '/permissionMenu',
                     component: getComponent('permission', 'permission'),
                     meta: {
-                        title: 'menu',
+                        title: 'permissionMenu',
                         roles: ['admin']
                     }
                 },

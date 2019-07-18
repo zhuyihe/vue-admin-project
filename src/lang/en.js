@@ -19,7 +19,7 @@ const en={
         draglist:'Draglist',
         dragtable:'Dragtable',
         cricle:'Cricle',
-        menu:'Menu',
+        permissionMenu:'Menu',
         permissionBtn:'PermissionBtn',
         '404':'404'
     },

@@ -17,6 +17,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.clearfix{
+  float: left;
+}
 .showAside {
   text-align: left;
   margin-left: 10px;
