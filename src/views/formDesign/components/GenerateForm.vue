@@ -59,11 +59,17 @@ export default {
     }
   },
   created () {
+    // console.log(this.data.list)
     this.generateModle(this.data.list)
+    console.log(this.remote)
+    console.log(this.value)
+    console.log(this.insite)
+    // console.log(remote)
   },
   mounted () {
   },
   methods: {
+    
     generateModle (genList) {
       for (let i = 0; i < genList.length; i++) {
         if (genList[i].type === 'grid') {
