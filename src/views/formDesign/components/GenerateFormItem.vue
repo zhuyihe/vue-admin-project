@@ -203,7 +203,6 @@
 
 <script>
 import FmUpload from './Upload'
-// import FmEditor from './Editor/tinymce'
 
 export default {
   props: ['widget', 'models', 'rules', 'remote'],
@@ -216,7 +215,7 @@ export default {
     }
   },
   created () {
-    console.log(this.remote)
+    console.log(this.models)
     if (this.widget.options.remote && this.remote[this.widget.options.remoteFunc]) {
       this.remote[this.widget.options.remoteFunc]((data) => {
         this.widget.options.remoteOptions = data.map(item => {

@@ -298,7 +298,7 @@ export default {
     }
   },
   mounted () {
-
+    console.log(ace)
   },
   methods: {
     handleGoGithub () {
