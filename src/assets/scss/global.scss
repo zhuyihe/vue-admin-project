@@ -10,6 +10,7 @@ $base-green:#34A853;
 $base-pink:#E2918C;
 $base-f8:#f8f8f8;
 $base-666:#666;
+
 // Aside
 .el-scrollbar {
     height: 100%;
@@ -17,7 +18,6 @@ $base-666:#666;
     .scrollbar-wrapper {
         overflow-x: hidden !important;
         .el-scrollbar__view {
-            height: 100%;
             overflow-x: hidden !important;
         }
     }
